@@ -33,6 +33,8 @@ end
 
 buid_web_page(body)
 
-def photos_count
-
+def photos_count(body)
+  body['photos'].map{|x| x['camera']['name']}.group_by{|x| x}.map{|k,v| [k,v.count]}
 end
+
+puts photos_count(body)
